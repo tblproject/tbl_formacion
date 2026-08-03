@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 05 – Modelos: intermediate y marts
 
 ## Objetivo

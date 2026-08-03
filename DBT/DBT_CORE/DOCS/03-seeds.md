@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 03 – Seeds: datos iniciales
 
 ## Objetivo

@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 11 – Unit tests
 
 ## Objetivo

@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 07 – Jinja, macros y packages
 
 ## Objetivo

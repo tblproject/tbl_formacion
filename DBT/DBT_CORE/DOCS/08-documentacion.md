@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 08 – Documentación y linaje
 
 ## Objetivo

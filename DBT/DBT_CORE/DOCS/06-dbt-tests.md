@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 06 – dbt Tests (calidad de datos)
 
 ## Objetivo

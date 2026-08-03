@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 12 – Comandos, entornos y buenas prácticas
 
 ## Objetivo

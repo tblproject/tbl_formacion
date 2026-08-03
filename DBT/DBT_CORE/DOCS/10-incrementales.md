@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 10 – Modelos incrementales
 
 ## Objetivo

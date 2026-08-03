@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 04 – Sources y capa staging
 
 ## Objetivo

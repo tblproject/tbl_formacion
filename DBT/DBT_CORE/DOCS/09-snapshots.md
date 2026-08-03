@@ -1,3 +1,8 @@
+---
+tags:
+  - DBT_CORE
+---
+
 # Fase 09 – Snapshots (SCD tipo 2)
 
 ## Objetivo
