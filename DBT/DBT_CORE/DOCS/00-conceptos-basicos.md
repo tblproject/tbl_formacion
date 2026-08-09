@@ -1,6 +1,7 @@
 ---
 tags:
   - DBT_CORE
+  - CONCEPTOS
 ---
 
 # Fase 00 – Conceptos básicos
@@ -46,12 +47,12 @@ Ventajas del ELT con dbt: aprovechas la potencia del almacén, mantienes los dat
 ### El DAG en una imagen
 
 ```
-                   ┌─ stg_customers ─┐
-raw_customers ─────┤                 ├─▶ dim_customers ─┐
-raw_orders ────────┼─ stg_orders ────┤                  ├─▶ fct_orders ─▶ dashboard
-raw_order_items ───┼─ stg_order_items┼─▶ int_orders ────┘
-raw_products ──────┼─ stg_products ──┘
-raw_payments ──────┴─ stg_payments
+                 ┌─ stg_customers ─┐
+raw_customers ───┤                 ├─▶ dim_customers ─┐
+raw_orders ──────┼─ stg_orders ────┤                  ├─▶ fct_orders ─▶ dashboard
+raw_order_items ─┼─ stg_order_items┼─▶ int_orders ────┘
+raw_products ────┼─ stg_products ──┘
+raw_payments ────┴─ stg_payments
 ```
 
 dbt calcula este grafo solo a partir de tus `ref()`. Nunca tienes que indicar manualmente el orden de ejecución.

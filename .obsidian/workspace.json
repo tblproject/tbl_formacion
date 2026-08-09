@@ -53,10 +53,14 @@
             "id": "3744ea331483a7b4",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01-instalacion-y-entorno"
             }
           }
         ],
@@ -80,10 +84,12 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de archivos"
             }
           },
           {
@@ -210,17 +216,18 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
     }
   },
   "active": "3744ea331483a7b4",
   "lastOpenFiles": [
+    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
     "DBT/DBT_CORE/DOCS/12-despliegue-y-buenas-practicas.md",
     "DBT/DBT_CORE/DOCS/11-unit-tests.md",
     "DBT/DBT_CORE/DOCS/10-incrementales.md",
@@ -234,7 +241,6 @@
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
     "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
     "LICENSE.md",
-    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
     "README.md",
     "Untitled.base",
     "06-dbt-tests.md",
