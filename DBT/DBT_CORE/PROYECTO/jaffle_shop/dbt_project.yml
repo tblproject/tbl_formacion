@@ -1,0 +1,64 @@
+name: 'jaffle_shop'
+version: '1.0.0'
+config-version: 2
+
+# El "profile" enlaza con el bloque de conexion definido en profiles.yml
+profile: 'jaffle_shop'
+
+# Rutas donde dbt busca cada tipo de recurso
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+
+# Carpetas que "dbt clean" elimina
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Variables de proyecto (se leen con {{ var('...') }})
+vars:
+  # A partir de esta fecha se consideran pedidos "recientes" en el modelo incremental
+  fecha_corte_incremental: '2024-01-01'
+
+# Configuracion por defecto de materializacion por capa.
+# Se puede sobreescribir en cada modelo con {{ config(...) }} o en un _properties.yml
+models:
+  jaffle_shop:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+
+# Configuracion por defecto de los seeds (tipos de columna explicitos)
+seeds:
+  jaffle_shop:
+    +schema: raw
+    raw_customers:
+      +column_types:
+        id: integer
+    raw_products:
+      +column_types:
+        id: integer
+        price_cents: integer
+    raw_orders:
+      +column_types:
+        id: integer
+        user_id: integer
+    raw_order_items:
+      +column_types:
+        id: integer
+    raw_payments:
+      +column_types:
+        id: integer
+        amount_cents: integer
+    seed_status_map:
+      +column_types:
+        is_final: boolean

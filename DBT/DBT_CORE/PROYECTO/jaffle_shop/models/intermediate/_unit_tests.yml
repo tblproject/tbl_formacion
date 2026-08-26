@@ -1,0 +1,21 @@
+version: 2
+
+# Los unit tests validan la LOGICA de transformacion con datos ficticios de
+# entrada, sin depender de los datos reales. Se ejecutan con:  dbt test
+unit_tests:
+  - name: test_calculo_importe_linea
+    description: "El importe de linea debe ser precio * cantidad."
+    model: int_order_items_priced
+    given:
+      - input: ref('stg_order_items')
+        rows:
+          - {order_item_id: 1, order_id: 100, product_id: 1, quantity: 2}
+          - {order_item_id: 2, order_id: 100, product_id: 2, quantity: 3}
+      - input: ref('stg_products')
+        rows:
+          - {product_id: 1, product_name: 'Jaffle', category: 'comida', price_cents: 550, price_eur: 5.50}
+          - {product_id: 2, product_name: 'Cafe',   category: 'bebida', price_cents: 200, price_eur: 2.00}
+    expect:
+      rows:
+        - {order_item_id: 1, line_amount_eur: 11.00}
+        - {order_item_id: 2, line_amount_eur: 6.00}

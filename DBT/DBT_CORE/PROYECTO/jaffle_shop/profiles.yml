@@ -1,0 +1,17 @@
+# Este profiles.yml se incluye dentro del proyecto para que el ejemplo sea
+# autocontenido. En un entorno real suele vivir en ~/.dbt/profiles.yml y NO
+# se sube al control de versiones (contiene credenciales).
+#
+# Para usar este fichero ejecuta dbt con:  dbt <comando> --profiles-dir .
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # Fichero de base de datos DuckDB. Se crea solo la primera vez.
+      path: 'jaffle_shop.duckdb'
+      threads: 4
+    prod:
+      type: duckdb
+      path: 'jaffle_shop_prod.duckdb'
+      threads: 4

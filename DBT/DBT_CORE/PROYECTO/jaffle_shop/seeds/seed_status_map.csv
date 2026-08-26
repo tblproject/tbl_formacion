@@ -1,0 +1,5 @@
+order_status,status_description,is_final
+placed,Pedido registrado pendiente de envio,false
+shipped,Pedido enviado en transito,false
+completed,Pedido entregado y completado,true
+returned,Pedido devuelto por el cliente,true

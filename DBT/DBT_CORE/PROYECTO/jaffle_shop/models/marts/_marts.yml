@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension de clientes con metricas de negocio."
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: lifetime_value_eur
+        description: "Suma del importe de todos los pedidos del cliente."
+        data_tests:
+          - non_negative
+      - name: number_of_orders
+        data_tests: [not_null]
+
+  - name: fct_orders
+    description: "Tabla de hechos: un pedido por fila."
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_id
+        data_tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: order_amount_eur
+        data_tests:
+          - non_negative
+
+  - name: dim_products
+    description: "Dimension de productos."
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]
+
+exposures:
+  - name: cuadro_mando_ventas
+    label: "Cuadro de mando de ventas"
+    type: dashboard
+    maturity: high
+    url: https://bi.example.com/dashboards/ventas
+    description: >
+      Dashboard ejecutivo de ventas que consume las tablas de marts.
+      Declararlo como exposure permite ejecutar todo lo que alimenta el
+      dashboard con:  dbt build -s +exposure:cuadro_mando_ventas
+    depends_on:
+      - ref('fct_orders')
+      - ref('dim_customers')
+    owner:
+      name: Equipo de Analitica
+      email: analitica@example.com

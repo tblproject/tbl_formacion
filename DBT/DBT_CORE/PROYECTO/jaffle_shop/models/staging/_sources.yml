@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: jaffle_raw
+    description: >
+      Datos crudos del negocio "Jaffle Shop". En este curso se cargan como
+      seeds en el esquema `raw` (ver Fase 03) y se declaran como source para
+      practicar la funcion source() y separar los datos crudos de los modelos.
+    schema: raw
+    tables:
+      - name: raw_customers
+        description: "Un registro por cliente registrado."
+      - name: raw_products
+        description: "Catalogo de productos con su precio en centimos."
+      - name: raw_orders
+        description: "Un registro por pedido realizado."
+      - name: raw_order_items
+        description: "Lineas de pedido: producto y cantidad dentro de un pedido."
+      - name: raw_payments
+        description: "Pagos asociados a pedidos ya facturados."
+        loaded_at_field: "created_at::timestamp"
+        freshness:
+          warn_after: {count: 3650, period: day}
