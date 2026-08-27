@@ -2,7 +2,6 @@
 tags:
   - DBT_CORE
 ---
-
 # Fase 02 – Tu primer proyecto
 
 ## Objetivo

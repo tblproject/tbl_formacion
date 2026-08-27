@@ -3,7 +3,6 @@ tags:
   - DBT_CORE
   - CONCEPTOS
 ---
-
 # Fase 00 – Conceptos básicos
 
 ## Objetivo
