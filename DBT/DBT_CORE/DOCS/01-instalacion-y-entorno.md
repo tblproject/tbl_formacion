@@ -1,8 +1,8 @@
 ---
 tags:
   - DBT_CORE
+  - INSTALACION
 ---
-
 # Fase 01 – Instalación y entorno
 
 ## Objetivo
@@ -104,7 +104,9 @@ Documentación de DuckDB: <https://duckdb.org/docs/>
 - Instalación de dbt (oficial): <https://docs.getdbt.com/docs/core/installation-overview>
 - Instalar con pip: <https://docs.getdbt.com/docs/core/pip-install>
 - Adaptadores soportados: <https://docs.getdbt.com/docs/supported-data-platforms>
+- Adaptadores aprovados: https://docs.getdbt.com/docs/trusted-adapters
+- Adaptadores de la comunidad: https://docs.getdbt.com/docs/community-adapters
 
 ## Siguiente paso
 
-➡️ [Fase 02 – Tu primer proyecto](02-primer-proyecto.md)
+[Fase 02 – Tu primer proyecto](02-primer-proyecto.md)

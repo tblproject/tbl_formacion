@@ -13,7 +13,7 @@ Entender **qué es dbt**, qué problema resuelve y el vocabulario mínimo antes 
 
 ## 1. ¿Qué es dbt?
 
-**dbt** (*data build tool*) es una herramienta open source que se encarga de la **"T" (Transform)** de un proceso de datos. Su idea central es sencilla y potente: **transformar datos escribiendo únicamente sentencias `SELECT`**.
+**dbt** (*data build tool*) es una herramienta open source que se encarga de la **"T" (Transform)** de un proceso de datos. Su idea central es sencilla y potente: **transformar datos escribiendo únicamente sentencias `SQL`**.
 
 Tú escribes un `SELECT` que describe *cómo* debe verse una tabla o vista; dbt se encarga del `CREATE TABLE`/`CREATE VIEW`, del orden de ejecución, de las dependencias entre modelos, de los tests y de la documentación. En otras palabras, dbt aplica al análisis de datos las buenas prácticas de la ingeniería de software: control de versiones, modularidad, pruebas automáticas, documentación y entornos (desarrollo/producción).
 
@@ -75,7 +75,7 @@ Para tener una visión completa, estas son las principales alternativas y en qu�
 - **Google Dataform** (gratuito dentro de GCP): equivalente a dbt pero integrado en BigQuery/Google Cloud. Útil si vives 100% en GCP. <https://cloud.google.com/dataform>
 - **SDF** (Rust, open source): motor de transformación con análisis estático del SQL y comprobación de tipos en tiempo de compilación. <https://www.sdf.com>
 - **Coalesce** (comercial): plataforma visual (low-code) de transformación sobre Snowflake, orientada a equipos que prefieren interfaz gráfica en lugar de escribir SQL a mano.
-- **Apache Airflow / Dagster / Prefect**: **no** son alternativas a dbt sino **orquestadores**. Resuelven *cuándo* y *en qué orden* se lanzan tareas (incluida la ejecución de dbt), no *cómo* transformar SQL. Complementan a dbt, no lo sustituyen.
+- **Apache Airflow / Dagster / Prefect**: **no** son alternativas a dbt sino **orquestadores**. Resuelven *cuándo* y *en qué orden* se lanzan tareas (incluida la ejecución de dbt), no *cómo* transformar SQL. Complementan a dbt, no lo sustituyen. Podemos utilizarlos para suplir el papel del orquestador que ofrece dbt cloud.
 
 dbt sigue siendo el estándar de facto por su enorme comunidad, su ecosistema de paquetes ([dbt Hub](https://hub.getdbt.com)) y su integración con casi cualquier almacén.
 
@@ -94,4 +94,4 @@ Para practicar dbt necesitas *algún* almacén de datos. En lugar de instalar y 
 
 ## Siguiente paso
 
-➡️ [Fase 01 – Instalación y entorno](01-instalacion-y-entorno.md)
+ [Fase 01 – Instalación y entorno](01-instalacion-y-entorno.md)
