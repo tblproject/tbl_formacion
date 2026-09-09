@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "DBT/DBT_CORE/DOCS/03-seeds.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,35 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "9d7b2c86308ec51d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "LEER"
+              "title": "03-seeds"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -218,28 +193,32 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "9d7b2c86308ec51d",
+  "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
-    "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
-    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
-    "DBT/DBT_CORE/DOCS/06-dbt-tests.md",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/logs/dbt.log",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/logs",
+    "DBT/DBT_CORE/ecommerce_project/dev.duckdb",
+    "DBT/DBT_CORE/DOCS/ANEXOS/Parámetros dbt project.md",
     "README.md",
+    "ANEXOS/'Parámetros.md",
+    "ANEXOS/Parámetros.md",
+    "ANEXOS",
+    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
+    "DBT/DBT_CORE/DOCS/ANEXOS",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/dev.duckdb",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/seeds",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/tests",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/README.md",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/analyses",
+    "DBT/DBT_CORE/ecommerce_project/bocateria/macros",
+    "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
+    "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
+    "DBT/DBT_CORE/DOCS/06-dbt-tests.md",
     "DBT/DBT_CORE/DOCS.md",
     "().md",
     "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
     "DBT/DBT_CORE/DOCS/12-despliegue-y-buenas-practicas.md",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/tests/generic/non_negative.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/stg_products.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/stg_payments.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/stg_orders.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/stg_order_items.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/stg_customers.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/_staging.yml",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/staging/_sources.yml",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/intermediate/int_orders_aggregated.sql",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/models/intermediate/int_order_items_priced.sql",
     "DBT/DBT_CORE/PROYECTO/jaffle_shop/README.md",
     "DBT/DBT_CORE/DOCS/11-unit-tests.md",
     "DBT/DBT_CORE/DOCS/10-incrementales.md",
@@ -248,7 +227,6 @@
     "DBT/DBT_CORE/DOCS/07-jinja-macros-packages.md",
     "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
     "Prueba canvas.canvas",
-    "Sin título.md",
     "DBT/DBT_CORE/DOCS/03-seeds.md",
     "LICENSE.md",
     "06-dbt-tests.md"

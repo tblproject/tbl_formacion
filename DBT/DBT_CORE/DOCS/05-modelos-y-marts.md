@@ -29,7 +29,7 @@ Ventaja: cada capa depende solo de la anterior, el código es modular y el linaj
 
 Contiene transformaciones que **no** son el producto final pero se reutilizan. Convención de nombres: `int_...`.
 
-[`int_order_items_priced.sql`](../proyecto/jaffle_shop/models/intermediate/int_order_items_priced.sql) — une líneas de pedido con el catálogo para calcular el importe de cada línea:
+[`int_order_items_priced.sql`](int_order_items_priced.sql) — une líneas de pedido con el catálogo para calcular el importe de cada línea:
 
 ```sql
 with order_items as ( select * from {{ ref('stg_order_items') }} ),
@@ -46,7 +46,7 @@ from order_items oi
 inner join products p on oi.product_id = p.product_id
 ```
 
-[`int_orders_aggregated.sql`](../proyecto/jaffle_shop/models/intermediate/int_orders_aggregated.sql) — agrega las líneas para obtener el total de cada pedido:
+[`int_orders_aggregated.sql`](int_orders_aggregated.sql) — agrega las líneas para obtener el total de cada pedido:
 
 ```sql
 select
@@ -63,7 +63,7 @@ Observa cómo `int_orders_aggregated` referencia a `int_order_items_priced` con 
 
 Los **marts** son el producto final que consumen los analistas y los dashboards. Seguimos un **esquema en estrella** clásico: tablas de **hechos** (`fct_`, eventos medibles) rodeadas de **dimensiones** (`dim_`, el contexto descriptivo).
 
-[`dim_customers.sql`](../proyecto/jaffle_shop/models/marts/dim_customers.sql) — dimensión de clientes con métricas derivadas (nº de pedidos, valor de vida):
+[`dim_customers.sql`](dim_customers.sql) — dimensión de clientes con métricas derivadas (nº de pedidos, valor de vida):
 
 ```sql
 customer_orders as (
@@ -81,7 +81,7 @@ from {{ ref('stg_customers') }} c
 left join customer_orders co on c.customer_id = co.customer_id
 ```
 
-[`fct_orders.sql`](../proyecto/jaffle_shop/models/marts/fct_orders.sql) — tabla de hechos, un pedido por fila con importe, nº de artículos, estado y si está pagado. Además une el seed de referencia con `{{ ref('seed_status_map') }}` para añadir `status_description` e `is_final_status` (ejemplo de cómo un seed se integra en el DAG). También tenemos [`dim_products.sql`](../proyecto/jaffle_shop/models/marts/dim_products.sql).
+[`fct_orders.sql`](fct_orders.sql) — tabla de hechos, un pedido por fila con importe, nº de artículos, estado y si está pagado. Además une el seed de referencia con `{{ ref('seed_status_map') }}` para añadir `status_description` e `is_final_status` (ejemplo de cómo un seed se integra en el DAG). También tenemos [`dim_products.sql`](dim_products.sql).
 
 El DAG completo queda así:
 

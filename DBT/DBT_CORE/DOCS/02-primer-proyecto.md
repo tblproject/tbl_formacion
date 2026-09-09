@@ -18,7 +18,7 @@ Para crear un proyecto nuevo se usa:
 dbt init mi_proyecto
 ```
 
-El asistente te pregunta el adaptador (elegirías `duckdb`) y genera la estructura de carpetas. **En este curso no necesitas ejecutarlo**: ya tienes el proyecto montado en [`proyecto/jaffle_shop/`](../proyecto/jaffle_shop/). Aun así conviene saber que existe.
+El asistente te pregunta el adaptador (elegirías `duckdb`) y genera la estructura de carpetas. **En este curso no necesitas ejecutarlo**: ya tienes el proyecto montado en [`PROYECTO/jaffle_shop/`](../PROYECTO/jaffle_shop/). Aun así conviene saber que existe.
 
 ## 2. Anatomía de un proyecto dbt
 
@@ -66,6 +66,7 @@ models:
 La sección `models:` aplica configuración **en cascada por carpeta**. Aquí decimos: "todo lo que esté en `models/staging/` se materializa como vista y va al esquema `staging`". Cada modelo puede sobreescribir esto con un bloque `{{ config(...) }}`.
 
 Referencia completa: <https://docs.getdbt.com/reference/dbt_project.yml>
+Anexo con el detalle de parámetros aceptados: [ANEXOS/'Parámetros dbt project'](obsidian://open?vault=tbl_formacion&file=DBT%2FDBT_CORE%2FDOCS%2FANEXOS%2FPar%C3%A1metros%20dbt%20project)
 
 ## 4. `profiles.yml`: la conexión al almacén
 

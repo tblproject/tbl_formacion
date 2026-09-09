@@ -26,7 +26,7 @@ Un unit test responde a: *"si le doy estas filas de entrada, ¿el modelo calcula
 
 ## 2. Nuestro unit test
 
-Validamos que `int_order_items_priced` calcula bien `line_amount_eur = quantity * price_eur`. Está en [`models/intermediate/_unit_tests.yml`](../proyecto/jaffle_shop/models/intermediate/_unit_tests.yml):
+Validamos que `int_order_items_priced` calcula bien `line_amount_eur = quantity * price_eur`. Está en [`models/intermediate/_unit_tests.yml`](_unit_tests.yml):
 
 ```yaml
 version: 2

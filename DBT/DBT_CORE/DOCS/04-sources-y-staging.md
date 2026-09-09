@@ -19,7 +19,7 @@ Un **source** es una declaración en YAML de las tablas crudas que ya existen en
 2. dbt las incluye en el **linaje** (verás de dónde vienen tus datos).
 3. Puedes controlar la **frescura** (`freshness`): ¿hace cuánto que no se actualizan?
 
-Nuestro fichero [`models/staging/_sources.yml`](../proyecto/jaffle_shop/models/staging/_sources.yml):
+Nuestro fichero [`models/staging/_sources.yml`](_sources.yml):
 
 ```yaml
 version: 2
@@ -56,7 +56,7 @@ La **capa de staging** es la primera transformación. Su misión es **limpiar y 
 - Convertir tipos (`created_at` → `date`).
 - Cálculos simples de fila (concatenar nombre y apellido, pasar céntimos a euros…).
 
-Ejemplo, [`stg_customers.sql`](../proyecto/jaffle_shop/models/staging/stg_customers.sql):
+Ejemplo, [`stg_customers.sql`](stg_customers.sql):
 
 ```sql
 with source as (

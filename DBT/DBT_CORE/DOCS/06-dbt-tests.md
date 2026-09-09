@@ -30,7 +30,7 @@ dbt trae cuatro tests genéricos de fábrica. Se declaran en un fichero de propi
 - **`accepted_values`**: la columna solo contiene valores de una lista.
 - **`relationships`**: cada valor existe en otra tabla (integridad referencial, tipo *foreign key*).
 
-Extracto real de [`models/staging/_staging.yml`](../proyecto/jaffle_shop/models/staging/_staging.yml):
+Extracto real de [`models/staging/_staging.yml`](_staging.yml):
 
 ```yaml
 version: 2

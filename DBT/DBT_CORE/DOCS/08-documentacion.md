@@ -64,7 +64,7 @@ dbt docs serve --profiles-dir .        # levanta un servidor web local (http://l
 
 Una **exposure** declara un uso *aguas abajo* de tus modelos: un dashboard, un informe, una aplicación de ML… Así el linaje no termina en los marts, sino que llega hasta el producto que consume los datos.
 
-De nuestro [`models/marts/_marts.yml`](../proyecto/jaffle_shop/models/marts/_marts.yml):
+De nuestro [`models/marts/_marts.yml`](_marts.yml):
 
 ```yaml
 exposures:

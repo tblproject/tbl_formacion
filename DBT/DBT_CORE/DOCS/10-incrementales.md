@@ -26,7 +26,7 @@ Ese filtro extra va dentro de un bloque `{% if is_incremental() %}`, que **solo 
 
 ## 3. Nuestro modelo incremental
 
-[`models/marts/fct_orders_incremental.sql`](../proyecto/jaffle_shop/models/marts/fct_orders_incremental.sql):
+[`models/marts/fct_orders_incremental.sql`](fct_orders_incremental.sql):
 
 ```sql
 {{
