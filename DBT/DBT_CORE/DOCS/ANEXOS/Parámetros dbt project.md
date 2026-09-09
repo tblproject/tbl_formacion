@@ -4,7 +4,7 @@ tags:
 ---
 
 ## Parámetros de Configuración en `dbt_project.yml` 
-El archivo `dbt_project.yml` es crucial para configurar y gestionar un proyecto dbt. A continuación, se detallan los parámetros disponibles en este archivo, según la documentación oficial: 
+El archivo `dbt_project.yml` es crucial para configurar y gestionar un proyecto dbt. A continuación, se detallan los parámetros principales en este archivo, se puede ver todo el detalle y listado ed configuraciónes en la documentación oficial en <https://docs.getdbt.com/reference/dbt_project.yml?version=2>: 
 
 ### General 
 -  **name**: Nombre del proyecto dbt.

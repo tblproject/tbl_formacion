@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_CORE/DOCS/03-seeds.md",
+                "file": "DBT/DBT_CORE/DOCS/ANEXOS/Parámetros dbt project.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-seeds"
+              "title": "Parámetros dbt project"
             }
           }
         ]
@@ -195,6 +195,7 @@
   },
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
+    "DBT/DBT_CORE/DOCS/03-seeds.md",
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
     "DBT/DBT_CORE/ecommerce_project/bocateria/logs/dbt.log",
     "DBT/DBT_CORE/ecommerce_project/bocateria/logs",
@@ -227,7 +228,6 @@
     "DBT/DBT_CORE/DOCS/07-jinja-macros-packages.md",
     "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
     "Prueba canvas.canvas",
-    "DBT/DBT_CORE/DOCS/03-seeds.md",
     "LICENSE.md",
     "06-dbt-tests.md"
   ]
