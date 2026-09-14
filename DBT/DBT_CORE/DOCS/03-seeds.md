@@ -2,7 +2,6 @@
 tags:
   - DBT_CORE
 ---
-
 # Fase 03 – Seeds: datos iniciales
 
 ## Objetivo
@@ -21,7 +20,7 @@ Un **seed** es un fichero CSV situado en la carpeta `seeds/` que dbt carga en el
 
 ## 2. Los datos del ejemplo
 
-En [`proyecto/jaffle_shop/seeds/`](../proyecto/jaffle_shop/seeds/) hay 5 ficheros CSV que representan los datos crudos ("raw") de nuestra cafetería online:
+En [`ecommerce_project/bocateria/seeds/`](../ecommerce_project/bocateria/seeds/) hay 5 ficheros CSV que representan los datos crudos ("raw") de nuestra cafetería online:
 
 | Fichero | Filas | Descripción |
 |---------|-------|-------------|
@@ -107,6 +106,7 @@ O instala la CLI de DuckDB (<https://duckdb.org/docs/api/cli>) y ejecuta `duckdb
 ```bash
 dbt seed --profiles-dir . -s raw_customers   # cargar solo un seed
 dbt seed --profiles-dir . --full-refresh     # recrear las tablas desde cero
+dbt seed --target prod  # cargar aplicando un target específico del profiles.yaml
 ```
 
 ---

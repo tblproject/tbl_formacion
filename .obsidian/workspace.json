@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_CORE/DOCS/ANEXOS/Parámetros dbt project.md",
+                "file": "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Parámetros dbt project"
+              "title": "04-sources-y-staging"
             }
           }
         ]
@@ -196,23 +196,25 @@
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
     "DBT/DBT_CORE/DOCS/03-seeds.md",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run_results.json",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_products.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/seed_status_map.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_orders.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_payments.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_order_items.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_customers.csv",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run",
+    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/README.md",
+    "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/logs/dbt.log",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/logs",
-    "DBT/DBT_CORE/ecommerce_project/dev.duckdb",
     "DBT/DBT_CORE/DOCS/ANEXOS/Parámetros dbt project.md",
     "README.md",
     "ANEXOS/'Parámetros.md",
     "ANEXOS/Parámetros.md",
-    "ANEXOS",
     "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
-    "DBT/DBT_CORE/DOCS/ANEXOS",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/dev.duckdb",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/seeds",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/tests",
     "DBT/DBT_CORE/ecommerce_project/bocateria/README.md",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/analyses",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/macros",
     "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
     "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
     "DBT/DBT_CORE/DOCS/06-dbt-tests.md",
@@ -226,7 +228,6 @@
     "DBT/DBT_CORE/DOCS/09-snapshots.md",
     "DBT/DBT_CORE/DOCS/08-documentacion.md",
     "DBT/DBT_CORE/DOCS/07-jinja-macros-packages.md",
-    "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
     "Prueba canvas.canvas",
     "LICENSE.md",
     "06-dbt-tests.md"
