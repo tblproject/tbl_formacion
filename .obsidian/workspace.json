@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
+                "file": "DBT/DBT_2_0/modulos/03-instalacion.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -24,11 +24,11 @@
                   "showSearch": false,
                   "searchQuery": "",
                   "backlinkCollapsed": false,
-                  "unlinkedCollapsed": false
+                  "unlinkedCollapsed": true
                 }
               },
               "icon": "lucide-file",
-              "title": "04-sources-y-staging"
+              "title": "03-instalacion"
             }
           }
         ]
@@ -195,17 +195,30 @@
   },
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
+    "DBT/DBT_2_0/modulos/00-indice.md",
+    "DBT/DBT_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
+    "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/fct_orders_incremental.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/fct_orders.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/dim_products.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/dim_customers.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/_marts__models.yml",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_products.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_orders.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_order_items.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_customers.sql",
+    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/_staging__sources.yml",
+    "DBT/DBT_2_0/proyecto-ejemplo/README.md",
+    "DBT/DBT_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
+    "DBT/DBT_2_0/modulos/09-incremental-y-snapshots.md",
+    "DBT/DBT_2_0/modulos/08-macros-y-jinja.md",
+    "DBT/DBT_2_0/modulos/07-tests.md",
+    "DBT/DBT_2_0/modulos/06-materializaciones-y-marts.md",
+    "DBT/DBT_2_0/modulos/05-seeds-sources-staging.md",
+    "DBT/DBT_2_0/modulos/04-primer-proyecto-y-ejecucion.md",
+    "DBT/DBT_2_0/modulos/03-instalacion.md",
+    "DBT/DBT_2_0/modulos/02-conceptos-basicos.md",
     "DBT/DBT_CORE/DOCS/03-seeds.md",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run_results.json",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_products.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/seed_status_map.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_orders.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_payments.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_order_items.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds/raw_customers.csv",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria/seeds",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run/bocateria",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/target/run",
     "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/README.md",
     "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
@@ -218,18 +231,6 @@
     "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
     "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
     "DBT/DBT_CORE/DOCS/06-dbt-tests.md",
-    "DBT/DBT_CORE/DOCS.md",
-    "().md",
-    "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
-    "DBT/DBT_CORE/DOCS/12-despliegue-y-buenas-practicas.md",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/README.md",
-    "DBT/DBT_CORE/DOCS/11-unit-tests.md",
-    "DBT/DBT_CORE/DOCS/10-incrementales.md",
-    "DBT/DBT_CORE/DOCS/09-snapshots.md",
-    "DBT/DBT_CORE/DOCS/08-documentacion.md",
-    "DBT/DBT_CORE/DOCS/07-jinja-macros-packages.md",
-    "Prueba canvas.canvas",
-    "LICENSE.md",
-    "06-dbt-tests.md"
+    "Prueba canvas.canvas"
   ]
 }

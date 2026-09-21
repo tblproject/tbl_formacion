@@ -1,0 +1,11 @@
+# Este fichero NO se carga automáticamente.
+# Se usa en el Módulo 09 (Incremental) para simular la llegada de pedidos nuevos:
+# los alumnos añadirán manualmente estas filas al final de raw_orders.csv
+# (o repetirán el patrón) y relanzarán `dbt seed` + `dbt run` para observar
+# cómo el modelo incremental solo procesa las filas nuevas.
+order_id,customer_id,order_date,status
+1026,9,2024-05-04,completed
+1027,10,2024-05-05,completed
+1028,3,2024-05-06,completed
+1029,11,2024-05-07,shipped
+1030,1,2024-05-08,completed

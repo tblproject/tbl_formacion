@@ -1,0 +1,46 @@
+name: 'tienda_online'
+version: '1.0.0'
+config-version: 2
+
+# Perfil de conexión (debe coincidir con una entrada de profiles.yml)
+profile: 'tienda_online'
+
+# Rutas del proyecto
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuración de los seeds: forzamos tipos de columna donde interesa
+seeds:
+  tienda_online:
+    +schema: seeds
+    raw_customers:
+      +column_types:
+        signup_date: date
+    raw_orders:
+      +column_types:
+        order_date: date
+
+# Configuración de materializaciones por carpeta (se explica en el Módulo 06)
+models:
+  tienda_online:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      core:
+        +materialized: table
+        +schema: marts
+
+vars:
+  # Variable de proyecto usada en macros/modelos (Módulo 08)
+  primer_dia_fiscal: '2024-01-01'

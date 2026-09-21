@@ -1,0 +1,4 @@
+# Instalación vía pip del motor "dbt Core v2" clásico (Python) + adaptador DuckDB.
+# Ver Módulo 03 para la alternativa recomendada (CLI de Fusion / dbt system).
+dbt-core>=1.10,<2.0
+dbt-duckdb>=1.9

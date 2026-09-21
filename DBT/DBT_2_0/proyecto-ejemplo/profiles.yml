@@ -1,0 +1,17 @@
+# Este fichero NO va dentro del proyecto en un caso real.
+# Vive en ~/.dbt/profiles.yml (fuera del repositorio, porque normalmente
+# contendría credenciales). Para este curso, al usar DuckDB embebido,
+# no hay usuario/contraseña: todo es un fichero local.
+
+tienda_online:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'tienda_online.duckdb'   # fichero de base de datos local, se crea solo
+      threads: 4
+
+    prod:
+      type: duckdb
+      path: 'tienda_online_prod.duckdb'
+      threads: 4

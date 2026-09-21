@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Una fila por cliente con sus métricas de pedidos.
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: Catálogo de productos para análisis.
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_orders
+    description: Una fila por pedido, con importe total y número de artículos.
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: order_total_eur
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
