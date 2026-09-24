@@ -16,6 +16,18 @@
   - **`dbt-oss`** → distribución 100% open source (Apache 2.0).
 
   Ambas corren sobre el mismo motor Fusion/Rust y son gratuitas de instalar en local; la diferencia está en qué capacidades extra trae cada una, no en el motor de ejecución.
+### 1.1 dbt vs dbt-oss
+
+Ambas distribuciones (`dbt` y `dbt-oss`) corren sobre el **mismo motor Rust** y son gratuitas de instalar en local. La diferencia no es de precio del motor en sí, sino de **qué capas adicionales trae cada binario**.
+
+|Función | Qué aporta |
+|---|---|
+|**Comprensión de SQL / análisis estático**|Parseo real del SQL antes de ejecutarlo (no solo renderizar Jinja)|
+|**LSP (Language Server)**|Autocompletado, "ir a definición", info al pasar el ratón (hover)|
+|**Errores en línea**|Se marcan en el editor al guardar, sin esperar a ejecutar|
+|**`dbt lint`**|Linter nativo y diagnósticos de errores integrados|
+|**Integración con la extensión de VS Code**|La extensión oficial solo despliega todo su potencial contra el binario `dbt`, no contra `dbt-oss`|
+
 
 > **Nota:** en el resto de esta formación seguimos usando "v2" o "Fusion" de forma coloquial para referirnos al motor Rust en general, pero a partir de la GA del 14/09/2026 el nombre correcto del producto que se instala es **`dbt`** (o `dbt-oss`), no "Fusion". 
 
@@ -44,32 +56,21 @@
 Usaremos **dbt Core v2 / Fusion** como referencia principal, porque:
 
 - Es la línea activa de desarrollo de dbt Labs de cara al futuro.
-- El flujo de trabajo, los ficheros (`dbt_project.yml`, `profiles.yml`) y
-  el lenguaje (Jinja + SQL) son **prácticamente idénticos** a v1.x: lo
-  aprendido aquí sirve igual si en tu empresa todavía usáis v1.
-- DuckDB es justo el escenario donde Fusion brilla para aprender: cero
-  fricción, sin credenciales.
+- El flujo de trabajo, los ficheros (`dbt_project.yml`, `profiles.yml`) y el lenguaje (Jinja + SQL) son **prácticamente idénticos** a v1.x: lo aprendido aquí sirve igual si en tu empresa todavía usáis v1.
+- DuckDB es justo el escenario donde Fusion brilla para aprender: cero fricción, sin credenciales.
 
-Cuando algo se comporte de forma distinta entre v1 y v2 se indicará
-explícitamente con una nota como esta:
+Cuando algo se comporte de forma distinta entre v1 y v2 se indicará explícitamente con una nota como esta:
 
 > **⚠️ Diferencia v1 vs v2:** explicación del cambio.
 
 ## 4. Instalar ambas no es excluyente
 
-Es habitual tener conviviendo `dbt-core` (v1, vía pip, para proyectos
-existentes) y el CLI de Fusion (v2) en la misma máquina; cada proyecto
-apunta a un binario distinto. El Módulo 03 muestra ambas rutas de
-instalación.
+Es habitual tener conviviendo `dbt-core` (v1, vía pip, para proyectos existentes) y el CLI de Fusion (v2) en la misma máquina; cada proyecto apunta a un binario distinto. El Módulo 03 muestra ambas rutas de instalación.
 
 ## 5. Para verificar en el momento de dar la formación
 
-Los detalles de versiones concretas, fechas de disponibilidad general
-(GA) y precios cambian con frecuencia — de hecho, esta tabla ya se
-actualizó una vez tras la GA de dbt 2.0.0 (14/09/2026) y el
-renombrado de marca ("Fusion" → `dbt` / `dbt-oss`). Antes de impartir
-este módulo, revisa la página oficial de versiones de dbt
-(`docs.getdbt.com`) por si algún dato ha vuelto a cambiar.
+Los detalles de versiones concretas, fechas de disponibilidad general (GA) y precios cambian con frecuencia — de hecho, esta tabla ya se actualizó una vez tras la GA de dbt 2.0.0 (14/09/2026) y el
+renombrado de marca ("Fusion" → `dbt` / `dbt-oss`). Puedes revisar la página oficial de versiones de dbt ([getdbt](docs.getdbt.com)) por si algún dato ha vuelto a cambiar.
 
 ## 6. Migrar un proyecto v1 existente a v2
 
@@ -85,5 +86,4 @@ pip install dbt-autofix   # o la vía de instalación que corresponda
 dbt-autofix .
 ```
 
-Es un buen primer paso antes de migrar en serio: detecta incompatibilidades
-sin tocar el proyecto real hasta que decides dar el salto.
+Es un buen primer paso antes de migrar en serio: detecta incompatibilidades sin tocar el proyecto real hasta que decides dar el salto.

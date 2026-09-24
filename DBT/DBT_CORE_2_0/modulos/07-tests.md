@@ -1,18 +1,13 @@
+#DBT_CORE 
 # Módulo 07 · dbt Tests
 
-Los tests son aserciones sobre tus datos. Un test **pasa** si su query
-asociada devuelve **cero filas**, y **falla** si devuelve una o más
-(esas filas son precisamente las que incumplen la regla).
+Los tests son aserciones sobre tus datos. Un test **pasa** si su query asociada devuelve **cero filas**, y **falla** si devuelve una o más (esas filas son precisamente las que incumplen la regla).
 
-> **⚠️ Diferencia v1 vs v2:** desde dbt 1.8 el bloque en el `.yml` se
-> llama `data_tests:` (antes `tests:`, que queda como alias en desuso).
-> Usamos `data_tests:` en todo el curso porque es la forma soportada de
-> cara al futuro en ambos motores.
+> **⚠️ Diferencia v1 vs v2:** desde dbt 1.8 el bloque en el `.yml` se llama `data_tests:` (antes `tests:`, que queda como alias en desuso). Usamos `data_tests:` en todo el curso porque es la forma soportada de cara al futuro en ambos motores.
 
 ## 1. Tests genéricos (los 4 "de fábrica")
 
-dbt trae 4 tests genéricos incorporados, que se declaran en YAML sobre
-una columna:
+dbt trae 4 tests genéricos incorporados, que se declaran en YAML sobre una columna:
 
 | Test | Qué comprueba |
 |---|---|
@@ -62,22 +57,18 @@ PASS accepted_values_stg_orders_status__completed__shipped__returned__cancelled
 
 ### Provocar un fallo a propósito (ejercicio)
 
-Edita `seeds/raw_orders.csv`, cambia el `status` de un pedido a
-`"pendiente"` (valor no aceptado), y relanza:
+Edita `seeds/raw_orders.csv`, cambia el `status` de un pedido a `"pendiente"` (valor no aceptado), y relanza:
 
 ```bash
 dbt seed --select raw_orders
 dbt test --select stg_orders
 ```
 
-Verás el test `accepted_values_...` en `FAIL`, con el número exacto de
-filas que incumplen la regla. Deshaz el cambio antes de continuar.
+Verás el test `accepted_values_...` en `FAIL`, con el número exacto de filas que incumplen la regla. Deshaz el cambio antes de continuar.
 
 ## 2. Tests singulares
 
-Un test singular es, simplemente, **un fichero `.sql` en `tests/`** con
-una query que debe devolver 0 filas. Perfecto para reglas de negocio
-específicas que no encajan en los 4 tests genéricos.
+Un test singular es, simplemente, **un fichero `.sql` en `tests/`** con una query que debe devolver 0 filas. Perfecto para reglas de negocio específicas que no encajan en los 4 tests genéricos.
 
 `tests/assert_order_total_matches_items.sql`:
 
@@ -91,8 +82,7 @@ where total_items > 0
   and order_total_eur <= 0
 ```
 
-Regla: *si un pedido tiene artículos, su importe debe ser mayor que
-cero*. Ejecuta:
+Regla: *si un pedido tiene artículos, su importe debe ser mayor que cero*. Ejecuta:
 
 ```bash
 dbt test --select assert_order_total_matches_items
@@ -100,7 +90,7 @@ dbt test --select assert_order_total_matches_items
 
 ## 3. Tests genéricos personalizados
 
-Se puede crear un test genérico propio con un macro `{% test %}`.
+Se puede crear un test genérico propio con un macro `{% test %}`. 
 `macros/test_is_positive.sql`:
 
 ```sql
@@ -113,8 +103,7 @@ where {{ column_name }} < 0
 {% endtest %}
 ```
 
-Una vez creado, se usa exactamente igual que `not_null` o `unique` en
-cualquier `.yml`:
+Una vez creado, se usa exactamente igual que `not_null` o `unique` en cualquier `.yml`:
 
 ```yaml
 - name: order_total_eur
@@ -122,9 +111,7 @@ cualquier `.yml`:
     - is_positive
 ```
 
-(Este patrón, `nombre_columna < 0`, es intencionalmente simple para
-practicar la sintaxis; para reglas de rango completas se usa
-`dbt_utils.accepted_range`, ver punto 5).
+(Este patrón, `nombre_columna < 0`, es intencionalmente simple para practicar la sintaxis; para reglas de rango completas se usa `dbt_utils.accepted_range`, ver punto 5).
 
 ## 4. Ejecutar todos los tests del proyecto
 
@@ -138,10 +125,7 @@ O, dentro del flujo completo (recomendado para el día a día):
 dbt build
 ```
 
-`dbt build` construye cada modelo **y** ejecuta sus tests antes de pasar
-al siguiente nodo del DAG que dependa de él. Si un test de `stg_orders`
-falla, dbt no construirá `fct_orders` encima de datos que ya sabe que
-están mal — así se evita propagar errores capa arriba.
+`dbt build` construye cada modelo **y** ejecuta sus tests antes de pasar al siguiente nodo del DAG que dependa de él. Si un test de `stg_orders` falla, dbt no construirá `fct_orders` encima de datos que ya sabe que están mal — así se evita propagar errores capa arriba.
 
 ## 5. Tests de paquetes externos: `dbt_utils`
 
@@ -156,8 +140,7 @@ En `models/marts/core/_marts__models.yml` verás:
         inclusive: true
 ```
 
-`dbt_utils.accepted_range` no viene de fábrica: la trae el paquete
-`dbt_utils` (`packages.yml`). Para que funcione hace falta:
+`dbt_utils.accepted_range` no viene de fábrica: la trae el paquete `dbt_utils` (`packages.yml`). Para que funcione hace falta:
 
 ```bash
 dbt deps
@@ -167,12 +150,7 @@ Lo retomamos en detalle en el Módulo 10.
 
 ## 6. Unit tests (novedad reciente, disponible en v1.8+ y en v2)
 
-A diferencia de los `data_tests` (que validan los datos reales de tu
-base de datos), los **unit tests** validan la **lógica SQL de un
-modelo** contra datos de entrada ficticios que tú defines — más parecido
-a un test unitario de software tradicional. Se declaran también en YAML,
-con `unit_tests:`. Ejemplo (no incluido en el proyecto de ejemplo para
-no sobrecargarlo, pero puedes añadirlo como ejercicio):
+A diferencia de los `data_tests` (que validan los datos reales de tu base de datos), los **unit tests** validan la **lógica SQL de un modelo** contra datos de entrada ficticios que tú defines — más parecido a un test unitario de software tradicional. Se declaran también en YAML, con `unit_tests:`. Ejemplo (no incluido en el proyecto de ejemplo para no sobrecargarlo, pero puedes añadirlo como ejercicio):
 
 ```yaml
 unit_tests:
@@ -189,17 +167,11 @@ unit_tests:
         - {order_id: 1, total_items: 0, order_total_eur: 0}
 ```
 
-Ventaja: se ejecutan **sin tocar la base de datos real**, muy rápidos, y
-son ideales para lógica compleja de negocio (cálculos, `CASE WHEN`
-anidados...) que quieres blindar frente a regresiones.
+Ventaja: se ejecutan **sin tocar la base de datos real**, muy rápidos, y son ideales para lógica compleja de negocio (cálculos, `CASE WHEN` anidados...) que quieres blindar frente a regresiones.
 
 ## 7. Buenas prácticas de testing
 
-- Como mínimo: `unique` + `not_null` en la clave primaria de **todo**
-  modelo expuesto (staging y marts).
-- `relationships` en cada clave foránea relevante — es la forma más
-  barata de detectar problemas de integridad entre capas.
-- Reserva los tests singulares para reglas de negocio que de verdad
-  importan; no abuses de ellos como sustituto de los genéricos.
-- Ejecuta `dbt build` (no solo `dbt run`) en cualquier flujo que vaya a
-  alimentar un dashboard o a otra herramienta aguas abajo.
+- Como mínimo: `unique` + `not_null` en la clave primaria de **todo**   modelo expuesto (staging y marts).
+- `relationships` en cada clave foránea relevante — es la forma más barata de detectar problemas de integridad entre capas.
+- Reserva los tests singulares para reglas de negocio que de verdad importan; no abuses de ellos como sustituto de los genéricos.
+- Ejecuta `dbt build` (no solo `dbt run`) en cualquier flujo que vaya a alimentar un dashboard o a otra herramienta aguas abajo.

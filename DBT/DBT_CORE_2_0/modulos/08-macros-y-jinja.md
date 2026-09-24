@@ -1,8 +1,7 @@
+#DBT_CORE 
 # Módulo 08 · Macros y Jinja
 
-dbt compila cada `.sql` con el motor de plantillas **Jinja** antes de
-mandarlo a la base de datos. Eso es lo que permite usar `{{ ref(...) }}`,
-`{% if %}`, bucles, variables, etc. dentro de SQL "normal".
+dbt compila cada `.sql` con el motor de plantillas **Jinja** antes de mandarlo a la base de datos. Eso es lo que permite usar `{{ ref(...) }}`, `{% if %}`, bucles, variables, etc. dentro de SQL "normal".
 
 ## 1. Sintaxis Jinja básica
 
@@ -63,10 +62,7 @@ from source
 
 ## 4. Macros que dbt invoca automáticamente: `generate_schema_name`
 
-Algunos macros no se llaman explícitamente desde un modelo, sino que
-**dbt los invoca por convención** en cada ejecución. `generate_schema_name`
-es el más habitual de sobrescribir: controla en qué esquema cae cada
-modelo cuando se usa `+schema:` en la configuración.
+Algunos macros no se llaman explícitamente desde un modelo, sino que **dbt los invoca por convención** en cada ejecución. `generate_schema_name` es el más habitual de sobrescribir: controla en qué esquema cae cada modelo cuando se usa `+schema:` en la configuración.
 
 `macros/generate_schema_name.sql`:
 
@@ -87,12 +83,7 @@ modelo cuando se usa `+schema:` en la configuración.
 {%- endmacro %}
 ```
 
-Por defecto, dbt concatena `<schema_del_target>_<custom_schema>` (p. ej.
-`main_marts`). Aquí lo sobrescribimos para que, en local, el esquema
-declarado (`staging`, `marts`...) se use **tal cual**, sin prefijo — más
-cómodo para inspeccionar con el CLI de DuckDB. Es el motivo por el que,
-tras `dbt run`, ves esquemas llamados `staging` y `marts` en vez de
-`main_staging` y `main_marts`.
+Por defecto, dbt concatena `<schema_del_target>_<custom_schema>` (p. ej. `main_marts`). Aquí lo sobrescribimos para que, en local, el esquema declarado (`staging`, `marts`...) se use **tal cual**, sin prefijo — más cómodo para inspeccionar con el CLI de DuckDB. Es el motivo por el que, tras `dbt run`, ves esquemas llamados `staging` y `marts` en vez de `main_staging` y `main_marts`.
 
 ## 5. Variables de proyecto (`vars`)
 
@@ -103,8 +94,7 @@ vars:
   primer_dia_fiscal: '2024-01-01'
 ```
 
-Se leen desde cualquier modelo o macro con `{{ var('primer_dia_fiscal') }}`,
-y se pueden sobrescribir en tiempo de ejecución sin tocar el YAML:
+Se leen desde cualquier modelo o macro con `{{ var('primer_dia_fiscal') }}`, y se pueden sobrescribir en tiempo de ejecución sin tocar el YAML:
 
 ```bash
 dbt run --select fct_orders --vars '{primer_dia_fiscal: 2024-06-01}'
@@ -114,8 +104,7 @@ dbt run --select fct_orders --vars '{primer_dia_fiscal: 2024-06-01}'
 
 ## 6. Control de flujo: `{% if %}` y `{% for %}`
 
-Patrón muy común — generar una columna por cada valor de una lista, sin
-repetir SQL a mano:
+Patrón muy común — generar una columna por cada valor de una lista, sin repetir SQL a mano:
 
 ```sql
 {% set categorias = ['electronica', 'papeleria', 'accesorios'] %}
@@ -130,23 +119,14 @@ from {{ ref('int_order_items_enriched') }}
 group by 1
 ```
 
-Como ejercicio, prueba a pegar esto en un modelo nuevo
-(`models/marts/core/rpt_ventas_por_categoria.sql`) y compílalo con `dbt
-compile` para ver el SQL expandido antes de ejecutarlo con `dbt run`.
+Como ejercicio, prueba a pegar esto en un modelo nuevo (`models/marts/core/rpt_ventas_por_categoria.sql`) y compílalo con `dbt compile` para ver el SQL expandido antes de ejecutarlo con `dbt run`.
 
 ## 7. `is_incremental()`: adelanto del Módulo 09
 
-Una función Jinja especial de dbt, disponible solo dentro de modelos con
-`materialized='incremental'`, que devuelve `true` únicamente cuando la
-tabla destino ya existe (es decir, en todas las ejecuciones excepto la
-primera o un `--full-refresh`). La vemos con detalle en el próximo
-módulo, donde es la pieza central.
+Una función Jinja especial de dbt, disponible solo dentro de modelos con `materialized='incremental'`, que devuelve `true` únicamente cuando la tabla destino ya existe (es decir, en todas las ejecuciones excepto la primera o un `--full-refresh`). La vemos con detalle en el próximo módulo, donde es la pieza central.
 
 ## 8. Resumen: ¿macro o modelo?
 
-- Si la lógica es **una transformación de datos completa** → modelo
-  (`.sql` en `models/`).
-- Si la lógica es **una pieza de SQL reutilizable en varios modelos**
-  (una fórmula, una condición, un fragmento de `CASE WHEN`) → macro.
-- Si la lógica es **una regla de validación reutilizable** → macro de
-  tipo `{% test %}` (Módulo 07).
+- Si la lógica es **una transformación de datos completa** → modelo (`.sql` en `models/`).
+- Si la lógica es **una pieza de SQL reutilizable en varios modelos** (una fórmula, una condición, un fragmento de `CASE WHEN`) → macro.
+- Si la lógica es **una regla de validación reutilizable** → macro de tipo `{% test %}` (Módulo 07).
