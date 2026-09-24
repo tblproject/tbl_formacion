@@ -1,5 +1,0 @@
-# Dependencias de paquetes dbt. Se instalan con:  dbt deps
-# dbt_utils aporta macros y tests genericos muy usados en la comunidad.
-packages:
-  - package: dbt-labs/dbt_utils
-    version: [">=1.1.0", "<2.0.0"]

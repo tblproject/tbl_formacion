@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_2_0/modulos/03-instalacion.md",
+                "file": "DBT/DBT_CORE_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "03-instalacion"
+              "title": "01-comparativa-dbt-core-v1-vs-v2-fusion"
             }
           }
         ]
@@ -193,22 +193,37 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "8b93577de21311a5",
+  "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
-    "DBT/DBT_2_0/proyecto-ejemplo/analyses",
+    "DBT/DBT_CORE_2_0/modulos/06-materializaciones-y-marts.md",
+    "DBT/DBT_CORE_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
+    "DBT/DBT_CORE_2_0/modulos/00-indice.md",
+    "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/_marts__models.yml",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/fct_orders_incremental.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/fct_orders.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/dim_products.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/dim_customers.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/_staging__models.yml",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/_staging__sources.yml",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_order_items.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_products.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_orders.sql",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/README.md",
+    "DBT/DBT_CORE_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
+    "DBT/DBT_CORE_2_0/modulos/09-incremental-y-snapshots.md",
+    "DBT/DBT_CORE_2_0/modulos/08-macros-y-jinja.md",
+    "DBT/DBT_CORE_2_0/modulos/07-tests.md",
+    "DBT/DBT_CORE_2_0/modulos/05-seeds-sources-staging.md",
+    "DBT/DBT_CORE_2_0/modulos/04-primer-proyecto-y-ejecucion.md",
+    "DBT/DBT_CORE_2_0/modulos/03-instalacion.md",
+    "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
+    "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
+    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
     "DBT/DBT_2_0/modulos/00-indice.md",
+    "DBT/DBT_2_0/modulos/03-instalacion.md",
     "DBT/DBT_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
     "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/fct_orders_incremental.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/fct_orders.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/dim_products.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/dim_customers.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/marts/core/_marts__models.yml",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_products.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_orders.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_order_items.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/stg_customers.sql",
-    "DBT/DBT_2_0/proyecto-ejemplo/models/staging/_staging__sources.yml",
     "DBT/DBT_2_0/proyecto-ejemplo/README.md",
     "DBT/DBT_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
     "DBT/DBT_2_0/modulos/09-incremental-y-snapshots.md",
@@ -216,21 +231,6 @@
     "DBT/DBT_2_0/modulos/07-tests.md",
     "DBT/DBT_2_0/modulos/06-materializaciones-y-marts.md",
     "DBT/DBT_2_0/modulos/05-seeds-sources-staging.md",
-    "DBT/DBT_2_0/modulos/04-primer-proyecto-y-ejecucion.md",
-    "DBT/DBT_2_0/modulos/03-instalacion.md",
-    "DBT/DBT_2_0/modulos/02-conceptos-basicos.md",
-    "DBT/DBT_CORE/DOCS/03-seeds.md",
-    "DBT/DBT_CORE/PROYECTO/ecommerce_project/bocateria/README.md",
-    "DBT/DBT_CORE/DOCS/05-modelos-y-marts.md",
-    "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
-    "DBT/DBT_CORE/DOCS/ANEXOS/Parámetros dbt project.md",
-    "README.md",
-    "ANEXOS/'Parámetros.md",
-    "ANEXOS/Parámetros.md",
-    "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
-    "DBT/DBT_CORE/ecommerce_project/bocateria/README.md",
-    "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
-    "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
     "Prueba canvas.canvas"
   ]
 }
