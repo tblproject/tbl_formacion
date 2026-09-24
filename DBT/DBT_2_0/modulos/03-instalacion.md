@@ -8,12 +8,21 @@ credenciales de ningún tipo.
 Hay dos rutas de instalación. Elige una (o instala las dos, no son
 excluyentes — ver Módulo 01, sección 4).
 
-## Opción A — dbt Core v2 / Fusion (recomendada para esta formación)
+## Opción A — dbt v2 (motor Fusion; recomendada para esta formación)
+
+> **Nota de nomenclatura (actualizado tras la GA de dbt 2.0.0, 14 de
+> septiembre de 2026):** dbt Labs ya no usa "Fusion" como nombre del
+> producto instalable. Lo que se instala se llama **`dbt`**
+> (distribución propietaria) o **`dbt-oss`** (100% open source, Apache
+> 2.0); "Fusion" es ahora el nombre del motor en Rust que hay detrás de
+> ambas. Este módulo usa `dbt` como nombre de comando por ser el más
+> habitual, pero si tu organización requiere la variante estrictamente
+> open source, sustituye el binario por `dbt-oss` en los mismos pasos.
 
 ### macOS / Linux
 
 ```bash
-# Instalador oficial (descarga el binario de Fusion)
+# Instalador oficial (descarga el binario de dbt v2 / motor Fusion)
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
 
 # Alternativa vía Homebrew
@@ -36,18 +45,30 @@ Deberías ver algo como:
 
 ```
 Core:
-  - installed: 2.0.x
+  - installed: 2.0.0
   ...
 ```
 
-### Adaptador DuckDB en v2
+### Adaptador DuckDB en v2: ya no se instala aparte
 
-El driver de DuckDB **viene integrado en el binario de Fusion**: no hace
-falta instalar nada adicional para el caso de uso de este curso. (Si más
-adelante necesitas extensiones de DuckDB como `httpfs` o `parquet`, el
-driver embebido no las soporta y hay que instalar el driver externo
-`dbc`; queda fuera del alcance de esta formación, se menciona solo como
-referencia.)
+**Este es el cambio más relevante para este curso.** En v1, el
+adaptador de DuckDB (`dbt-duckdb`) es un paquete Python independiente
+que instalas con `pip` (ver Opción B). En v2, la arquitectura cambia:
+los adaptadores viven **dentro del propio binario/monorepo en Rust** y
+se conectan a través de drivers **ADBC**, en lugar de ser paquetes
+Python sueltos.
+
+En la práctica, para DuckDB esto significa que **no hay nada que
+instalar**: la primera vez que ejecutas un comando dbt contra un
+`profiles.yml` con `type: duckdb`, dbt **descarga y cachea el driver de
+DuckDB automáticamente**. Basta con tener `dbt` instalado (paso
+anterior) y un `profiles.yml` válido — el Módulo 04 lo explica en
+detalle.
+
+(Si más adelante necesitas trabajar con catálogos DuckLake o Iceberg,
+v2 los soporta de forma nativa vía `catalogs.yml`; queda fuera del
+alcance de esta formación, se menciona en el Módulo 10 como contenido
+para ir más allá.)
 
 ### Editor recomendado
 
@@ -59,7 +80,9 @@ Fusion.
 ## Opción B — dbt Core v1.x "clásico" (motor Python)
 
 Útil si tu organización todavía trabaja sobre la línea v1, o si quieres
-comparar el comportamiento de ambos motores.
+comparar el comportamiento de ambos motores. A diferencia de v2, aquí sí
+hace falta instalar el adaptador de DuckDB como paquete Python aparte
+(`dbt-duckdb`).
 
 ```bash
 python3 -m venv venv

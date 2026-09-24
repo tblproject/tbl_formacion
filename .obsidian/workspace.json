@@ -193,8 +193,9 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "109c6f8edb9a8f58",
+  "active": "8b93577de21311a5",
   "lastOpenFiles": [
+    "DBT/DBT_2_0/proyecto-ejemplo/analyses",
     "DBT/DBT_2_0/modulos/00-indice.md",
     "DBT/DBT_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
     "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
@@ -230,7 +231,6 @@
     "DBT/DBT_CORE/ecommerce_project/bocateria/README.md",
     "DBT/DBT_CORE/PROYECTO/jaffle_shop/raw_data/LEER.md",
     "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
-    "DBT/DBT_CORE/DOCS/06-dbt-tests.md",
     "Prueba canvas.canvas"
   ]
 }

@@ -6,28 +6,44 @@
 
 - **dbt Core v1.x**: la línea "clásica" de dbt, escrita en Python, en
   desarrollo continuo desde el lanzamiento de dbt 1.0 (diciembre de 2021).
-- **dbt Fusion engine**: motor de nueva generación anunciado por dbt Labs,
-  reescrito desde cero en **Rust**, con comprensión nativa de SQL (no solo
-  renderiza Jinja y lo manda al warehouse "a ciegas"). Se distribuyó
-  inicialmente bajo licencia **Elastic License v2 (ELv2)**, es decir, de
-  código disponible pero no estrictamente open source.
-- **dbt Core v2.0**: a partir de 2026, dbt Labs fusiona ambos proyectos.
-  El motor en Rust que impulsaba Fusion se libera como código abierto bajo
-  **Apache 2.0** dentro del propio repositorio `dbt-core`, y pasa a ser el
-  motor de dbt Core a partir de la versión 2.0. El repositorio histórico
-  de Fusion queda archivado: todo el desarrollo se centraliza en un único
-  motor compartido.
+  Cada adaptador (Snowflake, BigQuery, DuckDB...) es un paquete Python
+  independiente que se instala por separado con `pip`.
+- **dbt Fusion engine**: motor de nueva generación anunciado por dbt Labs
+  el 28 de mayo de 2025, reescrito desde cero en **Rust**, con
+  comprensión nativa de SQL (no solo renderiza Jinja y lo manda al
+  warehouse "a ciegas"). Se distribuyó inicialmente bajo licencia
+  **Elastic License v2 (ELv2)**, es decir, de código disponible pero no
+  estrictamente open source. En su beta inicial **no incluía DuckDB**
+  como adaptador soportado de fábrica.
+- **dbt Core v2.0 (alpha)**: el 1 de junio de 2026 dbt Labs libera la
+  primera alpha, fusionando ambos proyectos. El motor en Rust que
+  impulsaba Fusion se libera como código abierto bajo **Apache 2.0**
+  dentro del propio repositorio `dbt-core` (el repositorio histórico de
+  `dbt-fusion` queda archivado).
+- **dbt 2.0.0 (GA)**: el **14 de septiembre de 2026** se publica la
+  versión estable. En esa misma release dbt Labs **renombra la marca**:
+  ya no se habla de "Fusion" como nombre de producto, sino que "Fusion"
+  pasa a ser únicamente el nombre del **motor**. Lo que se instala se
+  llama simplemente:
+  - **`dbt`** → distribución propietaria (con funciones adicionales de
+    pago/login).
+  - **`dbt-oss`** → distribución 100% open source (Apache 2.0).
 
-En otras palabras: **"dbt Core v2" y "Fusion" dejan de ser dos productos
-distintos con dos motores distintos**. A partir de v2.0 comparten el mismo
-núcleo en Rust. La diferencia real está en cómo se distribuye ese núcleo:
+  Ambas corren sobre el mismo motor Fusion/Rust y son gratuitas de
+  instalar en local; la diferencia está en qué capacidades extra trae
+  cada una, no en el motor de ejecución.
 
-- **dbt Core v2 (código abierto puro)**: el binario/paquete construido
-  directamente desde el repositorio Apache 2.0.
-- **Fusion**: la distribución precompilada y "enriquecida" de dbt Labs
-  sobre ese mismo motor, con funciones adicionales (algunas de pago,
-  activadas mediante login) como el language server para el IDE,
-  análisis estático avanzado o gestión de estado en la nube.
+> **Nota:** en el resto de esta formación seguimos usando "v2" o
+> "Fusion" de forma coloquial para referirnos al motor Rust en general,
+> pero a partir de la GA del 14/09/2026 el nombre correcto del producto
+> que se instala es **`dbt`** (o `dbt-oss`), no "Fusion". Ajusta el
+> vocabulario si impartes el curso más adelante y la nomenclatura ha
+> vuelto a cambiar.
+
+En otras palabras: **v1 y v2 dejan de ser dos productos con dos motores
+distintos**. A partir de v2.0 comparten el mismo núcleo en Rust. La
+diferencia real está en cómo se distribuye ese núcleo y en la
+arquitectura de los adaptadores (ver punto 6).
 
 ## 2. Tabla comparativa
 
@@ -41,10 +57,12 @@ núcleo en Rust. La diferencia real está en cómo se distribuye ese núcleo:
 | Linaje a nivel de columna | Limitado / vía introspección del warehouse | Nativo, gracias al parser SQL propio |
 | Editor / LSP | Soporte básico vía extensiones de la comunidad | Language Server oficial (autocompletado, "ir a definición", etc.) |
 | Artefactos de estado | JSON (`manifest.json`, `run_results.json`) | Parquet + JSON, pensados para escalar y para uso por agentes/IA |
-| Adaptadores | Ecosistema maduro, décadas de adaptadores de la comunidad | Compatibilidad casi total; algunos adaptadores/funcionalidades aún en beta (ver notas de cada adaptador) |
+| Adaptadores | Cada adaptador es un **paquete Python independiente** (`dbt-duckdb`, `dbt-snowflake`...) instalado vía `pip` | Los adaptadores viven **dentro del propio monorepo Rust** y se conectan mediante drivers **ADBC**; no se instalan como paquetes Python sueltos |
 | Modelos Python (`.py`) | Soporte estable | Soporte en *preview* público en la fecha de esta formación |
-| Instalación | `pip install dbt-core dbt-<adaptador>` | Instalador dedicado (`dbt system install` / Homebrew / winget) o vía `pip` para la variante open source pura |
-| DuckDB | Adaptador de la comunidad `dbt-duckdb`, maduro y completo | Driver embebido en el propio binario (algunas extensiones de DuckDB requieren el driver externo `dbc`, ver Módulo 03) |
+| Instalación | `pip install dbt-core dbt-<adaptador>` | Instalador dedicado (`dbt`/`dbt-oss` vía script oficial, Homebrew o winget); un único binario para todos los adaptadores |
+| DuckDB | Paquete `dbt-duckdb` de la comunidad (desde 2021), se instala aparte con `pip` | **Integrado de fábrica** desde dbt v2: no hay paquete que instalar — dbt descarga y cachea el driver de DuckDB automáticamente en la primera ejecución (ver Módulo 03) |
+| Catálogos DuckLake / Iceberg | No soportado de forma nativa (se hacía vía `ATTACH` manual en el perfil) | Soporte nativo vía `catalogs.yml` + flag `use_catalogs_v2` (ver Módulo 10) |
+| Metadatos del proyecto | `manifest.json` / `run_results.json` (puede pesar cientos de MB en proyectos grandes) | Además de JSON, se escriben como **Parquet** ("Information Schema"), consultables directamente con SQL sin parsear el JSON completo |
 | Coste | Gratuito, sin condiciones | Núcleo gratuito; algunas funciones de Fusion (p. ej. reutilización de estado en la nube) tienen precio por uso |
 
 ## 3. ¿Qué versión usar en esta formación?
@@ -73,7 +91,25 @@ instalación.
 ## 5. Para verificar en el momento de dar la formación
 
 Los detalles de versiones concretas, fechas de disponibilidad general
-(GA) y precios de Fusion cambian con frecuencia. Antes de impartir este
-módulo, se recomienda revisar la página oficial de comparación de
-versiones de dbt (`docs.getdbt.com`) por si algún dato de esta tabla ha
-quedado desactualizado.
+(GA) y precios cambian con frecuencia — de hecho, esta tabla ya se
+actualizó una vez tras la GA de dbt 2.0.0 (14/09/2026) y el
+renombrado de marca ("Fusion" → `dbt` / `dbt-oss`). Antes de impartir
+este módulo, revisa la página oficial de versiones de dbt
+(`docs.getdbt.com`) por si algún dato ha vuelto a cambiar.
+
+## 6. Migrar un proyecto v1 existente a v2
+
+Ruta recomendada por dbt Labs si ya tienes un proyecto en v1.12:
+
+```bash
+# 1. Con dbt Core v1.12 instalado, prueba el nuevo parser sin migrar nada todavía
+dbt parse --use-v2-parser
+
+# 2. Si parsea sin errores, instala dbt v2 (ver Módulo 03) y usa dbt-autofix
+#    para aplicar automáticamente los cambios de sintaxis requeridos
+pip install dbt-autofix   # o la vía de instalación que corresponda
+dbt-autofix .
+```
+
+Es un buen primer paso antes de migrar en serio: detecta incompatibilidades
+sin tocar el proyecto real hasta que decides dar el salto.

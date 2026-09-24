@@ -1,8 +1,3 @@
----
-tags:
-  - CONCEPTOS
-  - DBT2_0
----
 # Formación: dbt Core v2 desde cero (con DuckDB)
 
 Formación práctica y progresiva de **dbt Core**, centrada en trabajar

@@ -114,6 +114,25 @@ En nuestro proyecto no aplica (los seeds no tienen un timestamp real de
 carga), pero es imprescindible en un proyecto con ingesta real: avisa si
 el proceso de EL upstream se ha detenido.
 
+## 4bis. Novedades de dbt v2 específicas de DuckDB (para ir más allá)
+
+Desde la GA de dbt 2.0.0 (septiembre de 2026), además de traer el
+adaptador de DuckDB integrado (Módulo 03), hay dos capacidades nuevas
+que no cubrimos en profundidad en este curso pero que merece la pena
+conocer:
+
+- **Catálogos DuckLake / Iceberg** (`catalogs.yml` + flag
+  `use_catalogs_v2` en `dbt_project.yml`): permite que un modelo
+  materialice contra un catálogo DuckLake o Iceberg en lugar del
+  fichero `.duckdb` local, con materializaciones "catalog-aware". Útil
+  cuando el proyecto crece más allá de un único fichero local.
+- **Metadatos del proyecto como Parquet** ("Information Schema"):
+  ejecutando `dbt parse --generate-info-schema` se generan ficheros
+  Parquet en `target/info_schema/` que puedes consultar directamente
+  con SQL (incluido DuckDB) sin parsear `manifest.json` — muy útil para
+  scripts de auditoría o comprobaciones de convenciones en CI, en
+  proyectos grandes donde el manifest JSON pesa cientos de MB.
+
 ## 5. Recapitulación: comandos que ya dominas
 
 ```bash
