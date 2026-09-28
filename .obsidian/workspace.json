@@ -11,19 +11,9 @@
             "id": "109c6f8edb9a8f58",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
-            }
-          },
-          {
-            "id": "4751ba9f13d1de4d",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_CORE_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
+                "file": "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -38,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "01-comparativa-dbt-core-v1-vs-v2-fusion"
+              "title": "02-conceptos-basicos"
             }
           }
         ]
@@ -205,18 +195,22 @@
   },
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
+    "DBT/DBT_CORE_2_0/modulos/Anexos/01-slowly-changing-dimensions.md",
+    "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
+    "DBT/DBT_CORE_2_0/modulos/Anexos/00-materializacion.md",
+    "DBT/DBT_CORE_2_0/modulos/03-instalacion.md",
+    "DBT/DBT_CORE_2_0/modulos/Anexos",
+    "DBT/DBT_CORE_2_0/proyecto-ejemplo/README.md",
+    "DBT/DBT_CORE_2_0/modulos/00-indice.md",
+    "DBT/DBT_CORE_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
+    "README.md",
+    "DBT/DBT_CORE_2_0/modulos/06-materializaciones-y-marts.md",
     "DBT/DBT_CORE_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
     "DBT/DBT_CORE_2_0/modulos/09-incremental-y-snapshots.md",
     "DBT/DBT_CORE_2_0/modulos/08-macros-y-jinja.md",
     "DBT/DBT_CORE_2_0/modulos/07-tests.md",
-    "DBT/DBT_CORE_2_0/modulos/06-materializaciones-y-marts.md",
     "DBT/DBT_CORE_2_0/modulos/05-seeds-sources-staging.md",
     "DBT/DBT_CORE_2_0/modulos/04-primer-proyecto-y-ejecucion.md",
-    "DBT/DBT_CORE_2_0/modulos/03-instalacion.md",
-    "DBT/DBT_CORE_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
-    "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
-    "DBT/DBT_CORE_2_0/modulos/00-indice.md",
-    "README.md",
     "DBT/DBT_CORE/DOCS/02-primer-proyecto.md",
     "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/_marts__models.yml",
     "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/marts/core/fct_orders_incremental.sql",
@@ -227,8 +221,6 @@
     "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/_staging__sources.yml",
     "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_order_items.sql",
     "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_products.sql",
-    "DBT/DBT_CORE_2_0/proyecto-ejemplo/models/staging/stg_orders.sql",
-    "DBT/DBT_CORE_2_0/proyecto-ejemplo/README.md",
     "DBT/DBT_CORE/DOCS/01-instalacion-y-entorno.md",
     "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
     "DBT/DBT_2_0/modulos/00-indice.md",
@@ -239,8 +231,6 @@
     "DBT/DBT_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
     "DBT/DBT_2_0/modulos/09-incremental-y-snapshots.md",
     "DBT/DBT_2_0/modulos/08-macros-y-jinja.md",
-    "DBT/DBT_2_0/modulos/07-tests.md",
-    "DBT/DBT_2_0/modulos/06-materializaciones-y-marts.md",
     "Prueba canvas.canvas"
   ]
 }
