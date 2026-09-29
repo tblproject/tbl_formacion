@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
+                "file": "UNIKERNELS/README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "02-conceptos-basicos"
+              "title": "README"
             }
           }
         ]
@@ -195,8 +195,13 @@
   },
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
-    "DBT/DBT_CORE_2_0/modulos/Anexos/01-slowly-changing-dimensions.md",
+    "UNIKERNELS/APENDICE-glosario-y-referencias.md",
+    "UNIKERNELS/05-produccion-orquestacion-y-alternativas.md",
+    "UNIKERNELS/04-ejemplos-practicos.md",
+    "UNIKERNELS/03-componentes-y-funcionalidades.md",
+    "UNIKERNELS/02-instalacion-ubuntu-24.04.md",
     "DBT/DBT_CORE_2_0/modulos/02-conceptos-basicos.md",
+    "DBT/DBT_CORE_2_0/modulos/Anexos/01-slowly-changing-dimensions.md",
     "DBT/DBT_CORE_2_0/modulos/Anexos/00-materializacion.md",
     "DBT/DBT_CORE_2_0/modulos/03-instalacion.md",
     "DBT/DBT_CORE_2_0/modulos/Anexos",
@@ -226,11 +231,6 @@
     "DBT/DBT_2_0/modulos/00-indice.md",
     "DBT/DBT_2_0/modulos/03-instalacion.md",
     "DBT/DBT_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
-    "DBT/DBT_CORE/DOCS/04-sources-y-staging.md",
-    "DBT/DBT_2_0/proyecto-ejemplo/README.md",
-    "DBT/DBT_2_0/modulos/10-documentacion-paquetes-y-cierre.md",
-    "DBT/DBT_2_0/modulos/09-incremental-y-snapshots.md",
-    "DBT/DBT_2_0/modulos/08-macros-y-jinja.md",
     "Prueba canvas.canvas"
   ]
 }
