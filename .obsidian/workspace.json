@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UNIKERNELS/README.md",
+                "file": "UNIKERNELS/04-ejemplos-practicos.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "04-ejemplos-practicos"
             }
           }
         ]
@@ -195,6 +195,7 @@
   },
   "active": "109c6f8edb9a8f58",
   "lastOpenFiles": [
+    "UNIKERNELS/README.md",
     "UNIKERNELS/APENDICE-glosario-y-referencias.md",
     "UNIKERNELS/05-produccion-orquestacion-y-alternativas.md",
     "UNIKERNELS/04-ejemplos-practicos.md",
@@ -230,7 +231,6 @@
     "DBT/DBT_CORE/DOCS/00-conceptos-basicos.md",
     "DBT/DBT_2_0/modulos/00-indice.md",
     "DBT/DBT_2_0/modulos/03-instalacion.md",
-    "DBT/DBT_2_0/modulos/01-comparativa-dbt-core-v1-vs-v2-fusion.md",
     "Prueba canvas.canvas"
   ]
 }
