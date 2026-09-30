@@ -3,33 +3,143 @@
 
 ## 1. Crear un proyecto desde cero (referencia)
 
-Para *este* curso ya tienes el proyecto generado en `proyecto-ejemplo/`, pero así es como se crea uno nuevo desde cero:
+Para *este* curso ya tienes el proyecto generado en `tienda_online/`, pero así es como se crea uno nuevo desde cero:
 
 ```bash
-dbt init tienda_online
+dbt init --project-name tienda_online
 ```
 
-Esto pregunta interactivamente el nombre del proyecto y el adaptador, y genera el esqueleto: `dbt_project.yml`, carpeta `models/` con un ejemplo, y una entrada en `~/.dbt/profiles.yml`.
+Esto lanza un menú iterativo para elegir si usamos un profile ya existente, creamos uno desde cero, o nos saltamos este paso:
+```bash
+Installing dbt project and profile setup
+Info Created .vscode/extensions.json with dbt extension recommendation
+Success Project created successfully!
+Info Project name: tienda_online
+Info Project directory: tienda_online
+Which would you like to do?:
+> Use an existing profile from profiles.yml
+  Set up a new profile from scratch
+  Skip profile setup
+```
+
+Si elegimos crearlo de cero nos preguntará qué adaptador queremos usar, pero en el momento de realizar este material, este wizard todavía no incluía DuckDB por lo que nos saltaremos este paso y crearemos el profile antes de lanzar el init.:
+```bash
+Which would you like to do?: Set up a new profile from scratch
+Info Setting up your profile...
+   Loading ~/.dbt/profiles.yml
+Info Creating new profile...
+Which adapter would you like to use?:
+> snowflake
+  databricks
+  bigquery
+  clickhouse
+  exasol
+  postgres
+  redshift
+  fabric
+```
+El **dbt init** además de crear el directorio para el proyeto junto con las carpetas estándar, también creará el esqueleto  del archivo dbt_project.ml y en caso de crear el profiles desde cero con el wizard que se indica arriba, se crearía una entrada en  **`~/.dbt/profiles.yml`**.
+
+Para este curso crearemos un profile asociado al proyecto dentro de la ruta estándar y lo usaremos como referencia. Para ello creamos el archivo **~/.dbt/profiles.yml** con el siguiente contenido:
+```yaml
+tienda_online:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: prod.duckdb
+      threads: 4
+
+  target: dev
+```
+En donde se indica el nombre del proyecto, los outputs esperados que serán dos archivos **.duckdb** (uno por entorno) y se marca que el target por defecto sea dev.
+
+Ahora en el momento de crear el proyecto tenemos:
+```bash
+
+--- Ejecución del init del proyecto eligiendo usar un profile existente
+
+$ dbt init --project-name tienda_online
+Installing dbt project and profile setup
+Info Created .vscode/extensions.json with dbt extension recommendation
+Success Project created successfully!
+Info Project name: tienda_online
+Info Project directory: tienda_online
+Which would you like to do?:
+> Use an existing profile from profiles.yml
+  Set up a new profile from scratch
+  Skip profile setup
+  
+--- Seleccionamos el profile que hemos creado antes 
+
+Which would you like to do?: Use an existing profile from profiles.yml
+Select a profile to use:
+> tienda_online (duckdb)
+
+--- Vemos que se completa correctamente la creación del proyecto
+
+Info Using existing profile 'tienda_online'
+Success Set profile 'tienda_online' in dbt_project.yml
+Validating profile inputs, adapters, and connection
+
+       dbt 2.0.6
+   Loading ~/.dbt/profiles.yml
+ Debugging profile: dev
+ Debugging dbt version: 2.0.6
+ Debugging platform: linux x86_64 (unix)
+ Debugging adapter type: duckdb (remote)
+ Debugging dependencies:
+  git: OK
+ Debugging connection:
+  "path": "dev.duckdb"
+ Debugging connection test: OK (1.1s)
+  Debugged All checks passed!
+
+====================================================================================== Execution Summary =======================================================================================
+Finished 'init' successfully for target 'dev' [1m 19s]
+
+```
+
 
 ## 2. Anatomía de `dbt_project.yml`
 
 Abre `proyecto-ejemplo/dbt_project.yml`. Puntos clave:
 
 ```yaml
-name: 'tienda_online'
-profile: 'tienda_online'       # debe existir una entrada con este nombre en profiles.yml
+name: tienda_online
 
-model-paths: ["models"]
+profile: tienda_online
+
 seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  tienda_online:
+    +schema: raw
 
 models:
   tienda_online:
+    +static_analysis: strict
+    # Materialize staging models as views, and marts as tables
     staging:
-      +materialized: view       # config por defecto para TODO lo que esté en models/staging
+      +materialized: view
+    marts:
+      +materialized: table
+
 ```
 
 La sección `models:` permite fijar configuración (materialización, esquema, tags...) **por carpeta**, sin tener que repetirla en cada fichero `.sql`. Se puede sobrescribir modelo a modelo con un bloque
 `{{ config(...) }}` dentro del propio `.sql` (lo veremos en el Módulo 06).
+Se indican los directorios en donde se encontrarán los archivos de modelos, seeds, y macros. Así como la configuración del proceso de limpieza cuando se lance un **dbt clean**, en este caso se borrará el contenido de los directorios target y dbt_packages
 
 ## 3. Anatomía de `profiles.yml`
 
@@ -64,49 +174,26 @@ tienda_online:
 
 > **⚠️ Diferencia v1 vs v2:** en v1 estos comandos van precedidos de `dbt` a secas (`dbt run`). En Fusion existe también `dbt build`, `dbt run`, etc. de forma idéntica — la sintaxis de comandos no cambia; lo que cambia es el motor que hay detrás compilando y validando el SQL.
 
+
+### Importante: dbt parsea TODO el proyecto antes de ejecutar nada
+
+Este punto es clave y se explica poco: cualquier comando de dbt — incluido uno tan aparentemente aislado como `dbt seed`, que solo debería tocar los CSV de `seeds/, empieza siempre por **parsear el proyecto entero**: todos los `.sql` de `models/`, todos los `.yml`, todos los `snapshots/`, todas las `macros/`. Esto es así porque dbt necesita construir primero el **DAG completo** (todas las dependencias entre `ref()` y `source()`) antes de poder decidir qué hacer con el subconjunto que le has pedido.
+
+**Consecuencia práctica:** si hay un `ref()` o un `source()` roto en *cualquier* fichero `.sql` del proyecto —aunque ese modelo no tenga nada que ver con lo que estás ejecutando—, el parseo falla y **ningún** comando se ejecuta, ni siquiera `dbt seed` o `dbt debug`. El error que
+verás (`DependencyNotFound`, por ejemplo) apunta al fichero `.sql` concreto que rompe el parseo, no al comando que lanzaste.
+
+Esto es distinto de cómo se comportan `--select` y `--exclude` (punto 6 de este módulo): esos filtros deciden **qué se ejecuta**, pero se aplican **después** de que el parseo del proyecto completo haya tenido éxito. No sirven para "saltarse" un modelo roto.
+
+Si en algún momento un comando falla con un error que apunta a un fichero que no esperabas tocar, **ese es siempre el primer sitio donde mirar**: algo en ese `.sql`/`.yml` (un `ref()` a un modelo que no existe, un `source()` a una tabla no declarada, un YAML mal indentado)
+está rompiendo el parseo de todo el proyecto.
+
 ## 5. Primera ejecución real
 
 ```bash
-cd proyecto-ejemplo
-dbt debug          # ya lo hicimos en el Módulo 03, pero repítelo si acabas de instalar
-dbt seed           # carga raw_customers, raw_orders, raw_products, raw_order_items
+cd tienda_online
+dbt debug          
 ```
 
-Salida esperada (resumida):
-
-```
-1 of 4 OK loaded seed file seeds.raw_customers .......... [INSERT 15 in 0.05s]
-2 of 4 OK loaded seed file seeds.raw_orders ............. [INSERT 25 in 0.03s]
-3 of 4 OK loaded seed file seeds.raw_products ........... [INSERT 15 in 0.03s]
-4 of 4 OK loaded seed file seeds.raw_order_items ........ [INSERT 32 in 0.03s]
-```
-
-En el Módulo 05 declaramos estos seeds como `source()` y creamos los primeros modelos de staging. Por ahora, inspecciona el resultado directamente con el CLI de DuckDB:
-
-```bash
-python3 -c "
-import duckdb
-con = duckdb.connect('tienda_online.duckdb')
-print(con.sql('select * from seeds.raw_customers limit 5'))
-"
-```
-
-(o instala el CLI nativo de DuckDB — `duckdb tienda_online.duckdb` — si lo prefieres).
-
-## 6. Selectors: ejecutar solo una parte del DAG
-
-No hace falta ejecutar siempre todo el proyecto:
-
-```bash
-dbt run --select stg_customers          # un único modelo
-dbt run --select staging                # toda una carpeta/tag
-dbt run --select stg_orders+            # stg_orders y todo lo que depende de él
-dbt run --select +fct_orders            # fct_orders y todo lo que necesita para construirse
-dbt run --select tag:core               # por tag
-dbt run --exclude stg_products          # todo menos ese modelo
-```
-
-Este mismo lenguaje de selección funciona igual en `dbt test`, `dbt build` y `dbt docs generate`. Es la base para ejecuciones incrementales y para integrarlo, en el futuro, con un orquestador (fuera del alcance de este curso).
 
 ## 7. Logs y artefactos
 

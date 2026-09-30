@@ -1,6 +1,5 @@
-target/
 dbt_packages/
-logs/
-*.duckdb
-*.duckdb.wal
 dbt_internal_packages/
+logs/
+target/
+.env

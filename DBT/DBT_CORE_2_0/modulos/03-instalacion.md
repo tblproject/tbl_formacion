@@ -36,9 +36,7 @@ dbt --version
 Deberías ver algo como:
 
 ```
-Core:
-  - installed: 2.0.0
-  ...
+dbt 2.0.6
 ```
 
 ### Adaptador DuckDB en v2: ya no se instala aparte

@@ -1,15 +1,13 @@
-#DBT_CORE 
 # Módulo 05 · Seeds, sources y staging
 
 ## 1. Seeds: ¿cuándo usarlos?
 
 Un **seed** es un CSV versionado en el propio proyecto que dbt carga como tabla con `dbt seed`. Pensado para:
 
-- Datos de referencia pequeños y estables (códigos de país, mapeos moneda→símbolo, listas de exclusión...).
+- Datos de referencia pequeños y estables (códigos de país, mapeos  moneda→símbolo, listas de exclusión...).
 - **No** para sustituir a un proceso de ingesta de datos operacionales.
 
-> **Nota pedagógica:** en este curso usamos seeds también para los datos "operacionales" (`raw_orders`, `raw_customers`...) porque no tenemos herramienta de orquestación ni de ingesta. Es una simplificación deliberada para poder practicar sin infraestructura adicional — en un
-> proyecto real, esas tablas las cargaría un proceso de EL (Fivetran, Airbyte, un script propio) y dbt las consumiría vía `source()`, nunca vía `dbt seed`.
+> **Nota pedagógica:** en este curso usamos seeds también para los datos  "operacionales" (`raw_orders`, `raw_customers`...) porque no tenemos  herramienta de orquestación ni de ingesta. Es una simplificación  deliberada para poder practicar sin infraestructura adicional — en un proyecto real, esas tablas las cargaría un proceso de EL (Fivetran, Airbyte, un script propio) y dbt las consumiría vía `source()`, nunca vía `dbt seed`.
 
 Revisa `proyecto-ejemplo/seeds/`:
 
@@ -42,7 +40,7 @@ seeds:
 Un `source` es la forma en que dbt referencia una tabla que **no** ha creado él mismo. Se declara en YAML, nunca en SQL directamente, para poder:
 
 - Documentarla y testarla igual que a un modelo.
-- Trackear su **freshness** (antigüedad de los datos) — no lo cubrimos en detalle aquí, pero se menciona en el Módulo 10.
+- Trackear su **freshness** (antigüedad de los datos) — no lo cubrimos en  detalle aquí, pero se menciona en el Módulo 10.
 - Que el DAG de dbt sepa que ese nodo es el punto de partida.
 
 Abre `proyecto-ejemplo/models/staging/_staging__sources.yml`:
@@ -127,8 +125,7 @@ Salida esperada:
 4 of 4 OK created sql view model staging.stg_order_items ......... [OK in 0.03s]
 ```
 
-Fíjate en `created sql VIEW model`: es la materialización por defecto que fijamos para toda la carpeta `staging` en `dbt_project.yml` (`+materialized: view`). Las vistas no duplican datos y siempre reflejan el estado actual del seed — perfectas para una capa que solo renombra
-columnas. El Módulo 06 explica las demás materializaciones.
+Fíjate en `created sql VIEW model`: es la materialización por defecto que fijamos para toda la carpeta `staging` en `dbt_project.yml` (`+materialized: view`). Las vistas no duplican datos y siempre reflejan el estado actual del seed — perfectas para una capa que solo renombra columnas. El Módulo 06 explica las demás materializaciones.
 
 ## 5. Comprobación visual del DAG
 

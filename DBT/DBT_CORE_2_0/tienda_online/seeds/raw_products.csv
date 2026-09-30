@@ -1,0 +1,16 @@
+product_id,product_name,category,unit_price_cents,is_active
+101,Taza Bronze Layer,merchandising,1250,true
+102,Camiseta dbt Fan,merchandising,1899,true
+103,Teclado mecánico 60%,electronica,7999,true
+104,Ratón inalámbrico,electronica,3499,true
+105,Auriculares Bluetooth,electronica,5999,true
+106,Cuaderno de notas A5,papeleria,699,true
+107,Set de bolígrafos,papeleria,499,true
+108,Mochila para portátil,accesorios,4599,true
+109,Funda para portátil 14',accesorios,2299,true
+110,Lámpara de escritorio LED,hogar,2999,false
+111,Soporte para monitor,hogar,3999,true
+112,Webcam Full HD,electronica,4299,true
+113,Micrófono USB,electronica,6499,true
+114,Alfombrilla XXL,accesorios,1599,true
+115,Botella térmica,merchandising,1799,true

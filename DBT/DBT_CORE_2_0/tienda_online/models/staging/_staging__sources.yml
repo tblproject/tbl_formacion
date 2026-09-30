@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: tienda_online_raw
+    description: >
+      Datos "crudos" de la tienda online. En un proyecto real estas tablas
+      las cargaría un proceso de extracción/carga (Fivetran, Airbyte, un
+      script propio, etc.). En este curso, al no usar herramienta de
+      orquestación ni EL, las simulamos con `dbt seed` (ver Módulo 05).
+    schema: seeds   # coincide con +schema definido en dbt_project.yml para los seeds
+    tables:
+      - name: raw_customers
+        description: Un registro por cliente de la tienda.
+        columns:
+          - name: customer_id
+            description: Identificador único del cliente.
+            data_tests:
+              - unique
+              - not_null
+      - name: raw_orders
+        description: Un registro por pedido realizado.
+        columns:
+          - name: order_id
+            data_tests:
+              - unique
+              - not_null
+      - name: raw_products
+        description: Catálogo de productos.
+        columns:
+          - name: product_id
+            data_tests:
+              - unique
+              - not_null
+      - name: raw_order_items
+        description: Líneas de pedido (relación pedido-producto-cantidad).
+        columns:
+          - name: order_item_id
+            data_tests:
+              - unique
+              - not_null
